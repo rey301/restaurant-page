@@ -3,12 +3,30 @@ const webpack = require('webpack'); // to access built-in plugins
 const path = require('path');
 
 module.exports = {
-	entry: './src/index.js',
+	mode: 'development',
+	entry: {
+		main: './src/index.js',
+	},
 	output: {
-		filename: 'main.js',
-		path: path.resolve(__dirname, 'dist')
+		filename: '[name].js',
+		path: path.resolve(__dirname, 'dist'),
+		clean: true,
 	},
 	plugins: [
 		new HtmlWebpackPlugin({ template: './src/index.html'})
-	]
+	],
+	devServer: {
+		static: './.gitignore/dist',
+	},
+	optimization: {
+		runtimeChunk: 'single',
+	},
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use:  ["style-loader", "css-loader"],
+			}
+		]
+	}
 }
