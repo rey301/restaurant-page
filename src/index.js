@@ -109,4 +109,20 @@ const menuPage = (function () {
 })();
 
 const content = document.getElementById('content');
-content.appendChild(menuPage);
+content.appendChild(homePage);
+
+const homeBtn = document.getElementById('homeBtn');
+homeBtn.addEventListener('click', () => {
+	if (content.firstChild) {
+		content.removeChild(content.firstChild);
+	}
+	content.appendChild(homePage);
+});
+
+const menuBtn = document.getElementById('menuBtn');
+menuBtn.addEventListener('click', () => {
+	if (content.firstChild) {
+		content.removeChild(content.firstChild);
+	}
+	content.appendChild(menuPage);
+});
