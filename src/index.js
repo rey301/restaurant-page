@@ -42,53 +42,71 @@ const homePage = (function () {
 
 const menuPage = (function () {
 	const section = document.createElement('section');
-	section.id = 'menu-page';
 
-	// Menu container
-	const menuContainer = document.createElement('div');
-	menuContainer.id = 'menu-container';
+	// Create title section
+	const titleDiv = document.createElement('div');
+	titleDiv.className = 'title';
+	titleDiv.innerHTML = `
+                <div id="title-our">our</div>
+                <div id="title-menu">menu</div>
+                <div class="bg"></div>
+            `;
+	section.appendChild(titleDiv);
 
-	const h1 = document.createElement('h1');
-	h1.textContent = 'Go Eat';
+	// Create navigation bar menu
+	const navBarMenu = document.createElement('div');
+	navBarMenu.className = 'nav-bar-menu';
+	navBarMenu.innerHTML = `
+                <ul class="categories">
+                    <li>sides + sharing</li>
+                    <li>big plates</li>
+                    <li>extras</li>
+                    <li>desserts</li>
+                    <li>drinks</li>
+                    <li>non gluten</li>
+                    <li>kids</li>
+                </ul>
+            `;
+	section.appendChild(navBarMenu);
 
-	const list = document.createElement('ul');
+	// Create sides container
+	const sidesContainer = document.createElement('div');
+	sidesContainer.className = 'sides-container';
+	sidesContainer.innerHTML = `
+        <div class="sides-header">
+            <div class="sides-title">sides + sharing</div>
+            <div class="sides-line"></div>
+            <div class="sides-desc">
+                steamed, wrapped, folded, skewered. enjoy our small
+                plates. full of flavour and perfect for sharing.
+            </div>
+        </div>
+        <div class="card-container">
+            ${createCard('side-1', Side1Image, 'beef-fillet + pickled mooli seared tataki', 'thinly sliced and drizzled with a zesty yuzu sauce, garnished with chilli + coriander')}
+            ${createCard('side-2', Side2Image, 'sashimi salmon + pickled mooli seared tataki', 'thinly sliced and drizzled with a zesty yuzu sauce, garnished with chilli + coriander')}
+            ${createCard('side-3', Side3Image, 'smoky tofu + avocado seared tataki (vg)', 'thinly sliced and drizzled with a zesty yuzu sauce, garnished with chilli + coriander')}
+        </div>
+    `;
 
-	const items = [
-		'arugula bowl  21',
-		'homespun pork belly & locally-sourced bay leaf  22',
-		'clam  21',
-		'udon booze tacos with quinoa rye panini  15',
-		'rounded oyster with pan-seared kale tartare & ham  20',
-		'brined anchovy  22',
-		'seasonal bluefish  19',
-		'market sungold with rice medley  16',
-		'pressed acorn & salt  22',
-		'orecchiette, chorizo frittata & ramp jam  20',
-	];
+	section.appendChild(sidesContainer);
 
-	for (let i = 0; i < items.length; i++) {
-		const item = document.createElement('li');
-		item.textContent = items[i];
-		list.appendChild(item);
+	function createCard(imgId, imgSrc, title, description) {
+		return `
+            <div class="card">
+                <img class="card-image" id="${imgId}" src="${imgSrc}" />
+                <div class="new">new</div>
+                <div class="card-info">
+                    <div class="card-title">${title}</div>
+                    <div class="card-desc">${description}</div>
+                </div>
+                <div class="calories">(115 kcals)</div>
+                <div class="qv-btn">quick view</div>
+            </div>
+        `;
 	}
-
-	menuContainer.appendChild(h1);
-	menuContainer.appendChild(list);
-
-	section.appendChild(menuContainer);
 
 	return section;
 })();
 
-// Create the img element
-const sideImg1 = document.getElementById('side-1');
-sideImg1.src = Side1Image;
-
-const sideImg2 = document.getElementById('side-2');
-sideImg2.src = Side2Image;
-
-const sideImg3 = document.getElementById('side-3');
-sideImg3.src = Side3Image;
-
-// const content = document.getElementById('content');
-// content.appendChild(homePage);
+const content = document.getElementById('content');
+content.appendChild(menuPage);

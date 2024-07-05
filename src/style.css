@@ -92,7 +92,7 @@ button:first-child:hover {
 	padding-top: auto;
 	padding-bottom: auto;
 	color: white;
-	height: 40%;
+	height: 300px;
 	z-index: 1;
 	position: relative;
 }
