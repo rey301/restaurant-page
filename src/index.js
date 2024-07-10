@@ -3,6 +3,9 @@ import Food from './assets/images/food.jpg';
 import Side1Image from './assets/images/beef-tataki.png';
 import Side2Image from './assets/images/salmon-tataki.png';
 import Side3Image from './assets/images/tofu-tataki.png';
+import Book1Img from './assets/images/book-1.png';
+import Book2Img from './assets/images/book-2.png';
+
 {
 	/* <section id="first-section">
 			<h1>Welcome to <span id="logo">Go Eat</span></h1>
@@ -49,7 +52,7 @@ const menuPage = (function () {
 	titleDiv.innerHTML = `
                 <div id="title-our">our</div>
                 <div id="title-menu">menu</div>
-                <div class="bg"></div>
+                <div class="menu bg"></div>
             `;
 	section.appendChild(titleDiv);
 
@@ -109,7 +112,13 @@ const menuPage = (function () {
 })();
 
 const content = document.getElementById('content');
-content.appendChild(homePage);
+
+const book1Img = document.getElementById('book-1-img');
+book1Img.src = Book1Img;
+
+const book2Img = document.getElementById('book-2-img');
+book2Img.src = Book2Img;
+// content.appendChild(homePage);
 
 const homeBtn = document.getElementById('homeBtn');
 homeBtn.addEventListener('click', () => {
