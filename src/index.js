@@ -111,14 +111,106 @@ const menuPage = (function () {
 	return section;
 })();
 
+const shopPage = (function () {
+	// Create the main container div
+	const section = document.createElement('div');
+
+	// Create the title div and its children
+	const titleDiv = document.createElement('div');
+	titleDiv.classList.add('title');
+
+	const titleCookbooks = document.createElement('div');
+	titleCookbooks.id = 'title-cookbooks';
+	titleCookbooks.textContent = 'cookbooks';
+
+	const cookbooksBg = document.createElement('div');
+	cookbooksBg.classList.add('cookbooks', 'bg');
+
+	titleDiv.appendChild(titleCookbooks);
+	titleDiv.appendChild(cookbooksBg);
+
+	// Create the books div and its children
+	const booksDiv = document.createElement('div');
+	booksDiv.classList.add('books');
+
+	// Create the first book div and its children
+	const book1 = document.createElement('div');
+	book1.classList.add('book-1');
+
+	const book1Img = document.createElement('img');
+	book1Img.classList.add('book-image');
+	book1Img.id = 'book-1-img';
+	book1Img.src = Book1Img;
+
+	const book1Title = document.createElement('div');
+	book1Title.classList.add('book-title');
+	book1Title.textContent = 'wagamama your way';
+
+	const book1Desc = document.createElement('div');
+	book1Desc.classList.add('book-desc');
+	book1Desc.textContent = `most dishes in our cookbook are plant-based + every recipe that isn't, can be modified with one of our plant-based hacks. meaning you can wok from home, your way recreate wagamama classics or try out fresh new recipes from japan + asia, wagamama your way is not just about having the freedom to add a little more chilli to taste or squeeze of lime for tang. now, the choice to make plants the centre to your bowl over to you`;
+
+	const book1WhereToBuy = document.createElement('div');
+	book1WhereToBuy.textContent = 'where to buy it';
+
+	const book1LinkBtn = document.createElement('div');
+	book1LinkBtn.classList.add('linkBtn');
+
+	book1.appendChild(book1Img);
+	book1.appendChild(book1Title);
+	book1.appendChild(book1Desc);
+	book1.appendChild(book1WhereToBuy);
+	book1.appendChild(book1LinkBtn);
+
+	// Create the second book div and its children
+	const book2 = document.createElement('div');
+	book2.classList.add('book-2');
+
+	const book2Img = document.createElement('img');
+	book2Img.classList.add('book-image');
+	book2Img.id = 'book-2-img';
+	book2Img.src = Book2Img;
+
+	const book2Title = document.createElement('div');
+	book2Title.classList.add('book-title');
+	book2Title.textContent = 'feed your soul';
+
+	const book2Desc = document.createElement('div');
+	book2Desc.classList.add('book-desc');
+	book2Desc.textContent = `your guide to modern nourishment - the wagamama way. fresh favourites, balanced bowls + soulful staples - all designed to be made mindfully. cook quick midweek meals + slow-cooked ramens. iconic classics like katsu curry and yaki soba. plus, plant-based bowls such as kare burosu ramen + yasai itame. our latest cookbook is here to help you stay nourished. from bowl to soul`;
+
+	const book2WhereToBuy = document.createElement('div');
+	book2WhereToBuy.textContent = 'where to buy it';
+
+	const book2LinkBtn1 = document.createElement('div');
+	book2LinkBtn1.classList.add('linkBtn');
+
+	const book2LinkBtn2 = document.createElement('div');
+	book2LinkBtn2.classList.add('linkBtn-2');
+
+	book2.appendChild(book2Img);
+	book2.appendChild(book2Title);
+	book2.appendChild(book2Desc);
+	book2.appendChild(book2WhereToBuy);
+	book2.appendChild(book2LinkBtn1);
+	book2.appendChild(book2LinkBtn2);
+
+	// Append books to the books div
+	booksDiv.appendChild(book1);
+	booksDiv.appendChild(book2);
+
+	// Append title and books to the main container
+	section.appendChild(titleDiv);
+	section.appendChild(booksDiv);
+
+	// Append the main container to the body or any other desired parent element
+	document.body.appendChild(section);
+
+	return section;
+})();
+
 const content = document.getElementById('content');
-
-const book1Img = document.getElementById('book-1-img');
-book1Img.src = Book1Img;
-
-const book2Img = document.getElementById('book-2-img');
-book2Img.src = Book2Img;
-// content.appendChild(homePage);
+content.appendChild(homePage);
 
 const homeBtn = document.getElementById('homeBtn');
 homeBtn.addEventListener('click', () => {
@@ -134,4 +226,12 @@ menuBtn.addEventListener('click', () => {
 		content.removeChild(content.firstChild);
 	}
 	content.appendChild(menuPage);
+});
+
+const shopBtn = document.getElementById('shopBtn');
+shopBtn.addEventListener('click', () => {
+	if (content.firstChild) {
+		content.removeChild(content.firstChild);
+	}
+	content.appendChild(shopPage);
 });
